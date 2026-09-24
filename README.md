@@ -1,4 +1,17 @@
-# mpi-sppy Multistage Stochastic Planning
+# Stochastic Programming Methods
+
+<!-- portfolio-umbrella:start -->
+## Portfolio role
+
+This repository is the primary umbrella repository for this Jors Academy research area. Related projects have been consolidated under `projects/` so the methods, implementations, experiments, and case studies can be maintained and explored from one place.
+
+### Included projects
+
+- [`sddp-multistage-energy-storage`](projects/sddp-multistage-energy-storage/)
+- [`stochastic-project-selection-optimization-pulp`](projects/stochastic-project-selection-optimization-pulp/)
+
+Each consolidated project keeps its own files and a `SOURCE_REPOSITORY.md` provenance record. The snapshot preserves the source repository's default-branch files at consolidation time; repository-level history and metadata remain separate from the snapshot.
+<!-- portfolio-umbrella:end -->
 
 A reproducible three-stage stochastic production-planning example built with **Pyomo**, **mpi-sppy 0.14.0**, and the open-source **HiGHS** solver.
 
