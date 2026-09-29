@@ -1,0 +1,14 @@
+schema_version: 1
+repository: stochastic-programming-methods
+role: umbrella
+axis: methodology
+area: stochastic-programming
+status: active
+owner: jorsacademy
+projects:
+  - sddp-multistage-energy-storage
+  - stochastic-project-selection-optimization-pulp
+conventions:
+  provenance_records: true
+  reproducibility_expected: true
+  benchmark_assumptions_documented: true
