@@ -57,3 +57,11 @@ pytest
 ```
 
 GitHub Actions runs the suite on Python 3.10, 3.11, 3.12, and 3.13 with a 90% coverage gate.
+
+## Roadmap
+
+Planned method extensions that fit the repository's stochastic-programming scope:
+
+- Sample Average Approximation (SAA), including replication-based statistical validation;
+- L-shaped (Benders) decomposition for two-stage linear stochastic programs;
+- Progressive Hedging for scenario-decomposed multi-stage models.
