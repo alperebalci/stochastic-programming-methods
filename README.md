@@ -36,6 +36,41 @@ Each scenario is a Pyomo `ConcreteModel` with:
 
 The demonstration builds the deterministic equivalent with `mpisppy.utils.sputils.create_EF`. This path does not require MPI, which keeps local use and CI lightweight. The same scenario-tree metadata is suitable for later PH / hub-and-spoke experiments when MPI is available.
 
+## Sequential-decision / stochastic-DLA bridge
+
+The same three-stage scenario model is now exposed as a **rolling stochastic lookahead policy** in `stoch_planning.sequential`.
+
+The distinction is important:
+
+- the extensive form solves the complete scenario tree once;
+- `StochasticProductionLookaheadPolicy` treats the stochastic program as the optimization model inside a sequential policy;
+- after the first demand realization, the policy conditions on the observed branch and re-solves the remaining stochastic problem;
+- after the second demand realization, it solves the terminal recourse problem.
+
+Conceptually:
+
+```text
+state before demand
+      |
+      v
+solve stochastic lookahead
+      |
+      v
+implement current decision
+      |
+      v
+observe demand
+      |
+      v
+condition state and re-solve
+```
+
+The tests verify a useful consistency property: with the same optimal capacity expansion, the conditional rolling reoptimization after first demand produces the same stage-2 production decision as the corresponding nonanticipative node in the original extensive form.
+
+This provides a concrete bridge to the `sequential-decision-analytics` portfolio: a multi-stage stochastic program can serve as a **stochastic Direct Lookahead Approximation (DLA)** when it is repeatedly solved from the current information state to choose only the current action.
+
+The front-end problem framing remains in `decision-framing-and-sequential-decision-modeling`; this repository specializes in stochastic optimization models and scenario structure.
+
 ## Install
 
 ```bash
